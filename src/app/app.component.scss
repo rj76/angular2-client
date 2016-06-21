@@ -1,0 +1,450 @@
+// Core variables and mixins
+@import "bootstrap/_variables";
+@import "bootstrap/_mixins";
+  // Reset
+@import "bootstrap/_normalize";
+@import "bootstrap/_print";
+  // Core CSS
+@import "bootstrap/_scaffolding";
+@import "bootstrap/_type";
+@import "bootstrap/_code";
+@import "bootstrap/_grid";
+@import "bootstrap/_tables";
+@import "bootstrap/_forms";
+@import "bootstrap/_buttons";
+  // Components
+@import "bootstrap/_component-animations";
+@import "bootstrap/_glyphicons";
+@import "bootstrap/_dropdowns";
+@import "bootstrap/_button-groups";
+@import "bootstrap/_input-groups";
+@import "bootstrap/_navs";
+@import "bootstrap/_navbar";
+@import "bootstrap/_breadcrumbs";
+@import "bootstrap/_pagination";
+@import "bootstrap/_pager";
+@import "bootstrap/_labels";
+  /*@import "bootstrap/_badges";*/
+@import "bootstrap/_jumbotron";
+@import "bootstrap/_thumbnails";
+@import "bootstrap/_alerts";
+@import "bootstrap/_progress-bars";
+@import "bootstrap/_media";
+@import "bootstrap/_list-group";
+  /*@import "bootstrap/_panels";*/
+@import "bootstrap/_wells";
+@import "bootstrap/_close";
+  // Components w/ JavaScript
+@import "bootstrap/_modals";
+@import "bootstrap/_tooltip";
+@import "bootstrap/_popovers";
+@import "bootstrap/_carousel";
+  // Utility classes
+@import "bootstrap/_utilities";
+@import "bootstrap/_responsive-utilities";
+
+// custom css
+.center {
+  float: none;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.main-container {
+  .main-nav-items li {
+    font-size: 12px;
+  }
+}
+
+#collection-loading {
+  display: none;
+  height: 11px;
+  width: 43px;
+  position: fixed;
+  left: 20px;
+  top: 2px;
+  z-index: 2000;
+}
+
+.sub-header {
+  .logo img {
+    opacity: 0;
+    top: -60px;
+    z-index: 1040;
+    position: absolute;
+  }
+
+  margin-top: 56px;
+  .messagescontainer {
+  }
+  .page-header {
+    margin: 0;
+    h1 {
+      margin-bottom: -4px;
+      padding-bottom: 0;
+    }
+  }
+  .page-header-container {
+    h1 {
+      color: #808080;
+      font: bold 210%/100% "Lucida Grande", Arial, sans-serif;
+      position: relative;
+    }
+  }
+  .page-subnav {
+    @extend .pull-right;
+    z-index: 1000;
+    margin-top: -20px;
+  }
+  .page-subtitle {
+    margin-top: -16px;
+    opacity: .6;
+    h3 {
+      font-size: 14px;
+    }
+  }
+}
+.content-container {
+  .page-subnav {
+    padding-left: 180px;
+    width: 100%;
+    div, a {
+      @extend .pull-right;
+    }
+  }
+}
+
+.member-name {
+  display: none;
+  opacity: 0;
+  z-index: 1000;
+  position: absolute;
+  top: 28px;
+}
+
+.edit-icons p {
+  @extend .pull-right;
+  margin: 0;
+  padding: 0;
+}
+
+th.edit-icons a {
+  padding-left: 6px;
+}
+
+div.main-nav-items {
+  li.new-messages span.new-messages:after, li.partner-requests span.new-requests:after {
+    background: none repeat scroll 0 0 #CC0000;
+    border-radius: 4px 4px 4px 4px;
+    color: #FFFFFF;
+    content: attr(count);
+    display: inline-block;
+    font-size: 10px;
+    font-weight: bold;
+    height: 15px;
+    line-height: 1;
+    position: relative;
+    top: -7px;
+    padding: 2px;
+  }
+}
+
+/* TODO: because of imports, solve this properly */
+.dispatch {
+  .dispatch-cell {
+    .cell-start{
+      @extend .pull-left;
+    }
+    .cell-end{
+      @extend .pull-right;
+    }
+  }
+}
+
+/* icon translations */
+.my24-icons, .edit-icons {
+  .icon-refresh {
+    @extend .glyphicon;
+    @extend .glyphicon-refresh;
+  }
+
+  .icon-briefcase {
+    @extend .glyphicon;
+    @extend .glyphicon-briefcase;
+  }
+
+  .icon-send-message, .icon-envelope {
+    @extend .glyphicon;
+    @extend .glyphicon-envelope;
+  }
+
+  .icon-show-map, .icon-globe {
+    @extend .glyphicon;
+    @extend .glyphicon-globe;
+  }
+
+  .icon-assign {
+    @extend .glyphicon;
+    @extend .glyphicon-export;
+  }
+
+  .icon-assign-do {
+    @extend .glyphicon;
+    @extend .glyphicon-save;
+  }
+
+  .icon-thumbs-down {
+    @extend .glyphicon;
+    @extend .glyphicon-thumbs-down;
+  }
+  .icon-thumbs-up {
+    @extend .glyphicon;
+    @extend .glyphicon-thumbs-up;
+  }
+  .icon-in {
+    @extend .glyphicon;
+    @extend .glyphicon-save;
+  }
+
+  .icon-send {
+    @extend .glyphicon;
+    @extend .glyphicon-send;
+  }
+
+  .icon-back {
+    @extend .glyphicon;
+    @extend .glyphicon-chevron-left
+  }
+
+  .icon-zoom-in {
+    @extend .glyphicon;
+    @extend .glyphicon-zoom-in;
+  }
+
+  .icon-trash {
+    @extend .glyphicon;
+    @extend .glyphicon-trash;
+  }
+
+  .icon-edit {
+    @extend .glyphicon;
+    @extend .glyphicon-edit;
+  }
+
+  .icon-list {
+    @extend .glyphicon;
+    @extend .glyphicon-list;
+  }
+
+  .icon-question-sign {
+    @extend .glyphicon;
+    @extend .glyphicon-question-sign;
+  }
+
+  .icon-warning-sign {
+    @extend .glyphicon;
+    @extend .glyphicon-warning-sign;
+  }
+
+  .icon-floppy-disk {
+    @extend .glyphicon;
+    @extend .glyphicon-floppy-disk;
+  }
+
+  .icon-plus {
+    @extend .glyphicon;
+    @extend .glyphicon-plus;
+  }
+
+  .icon-user {
+    @extend .glyphicon;
+    @extend .glyphicon-user;
+  }
+
+  .icon-ok {
+    @extend .glyphicon;
+    @extend .glyphicon-ok;
+  }
+
+  .icon-back {
+    @extend .glyphicon;
+    @extend .glyphicon-chevron-left;
+  }
+
+  .icon-left {
+    @extend .glyphicon;
+    @extend .glyphicon-arrow-left;
+  }
+
+  .icon-left-double {
+    @extend .glyphicon;
+    @extend .glyphicon-backward;
+  }
+
+  .icon-right {
+    @extend .glyphicon;
+    @extend .glyphicon-arrow-right;
+  }
+
+  .icon-right-double {
+    @extend .glyphicon;
+    @extend .glyphicon-forward;
+  }
+
+  .icon-cash {
+    @extend .glyphicon;
+    @extend .glyphicon-usd;
+  }
+
+  .icon-search {
+    @extend .glyphicon;
+    @extend .glyphicon-search;
+  }
+
+  .icon-filter {
+    @extend .glyphicon;
+    @extend .glyphicon-filter;
+  }
+
+  .icon-documents {
+    @extend .glyphicon;
+    @extend .glyphicon-paperclip;
+  }
+
+  .icon-upload {
+    @extend .glyphicon;
+    @extend .glyphicon-file;
+  }
+}
+/* button translations */
+.but-danger {
+  @extend .btn;
+  @extend .btn-danger;
+}
+
+.but-primary {
+  @extend .btn;
+  @extend .btn-primary;
+}
+
+.but-info {
+  @extend .btn;
+  @extend .btn-info;
+}
+
+.but-add {
+  @extend .btn;
+  @extend .btn-primary;
+  @extend .btn-xs;
+  @extend .pull-right;
+}
+
+.but-zoom {
+  @extend .btn;
+  @extend .btn-primary;
+  @extend .btn-xs;
+  margin-right: 10px;
+  margin-top: 10px;
+}
+
+.but-primary-xs {
+  @extend .btn;
+  @extend .btn-primary;
+  @extend .btn-xs;
+}
+
+.but-danger-xs {
+  @extend .btn;
+  @extend .btn-danger;
+  @extend .btn-xs;
+}
+
+.help-block {
+  font-size: 12px;
+}
+
+/* custom textareas */
+textarea.rows-1 {
+  height: 20px;
+}
+
+textarea.rows-2 {
+  height: 40px;
+}
+
+textarea.rows-3 {
+  height: 60px;
+}
+
+textarea.rows-4 {
+  height: 90px;
+}
+
+textarea.rows-5 {
+  height: 100px;
+}
+
+.homepage-company {
+  margin-top: -48px;
+  #carousel-homepage {
+    width: 600px;
+    min-height: 384px;
+    padding: 0;
+  }
+  .twitter {
+    margin-left: 40px;
+    margin-top: 40px;
+  }
+}
+
+.footer {
+  .copy {
+    font-size: 12px;
+    opacity: .5;
+  }
+  .my24logo {
+    padding-left: 12px;
+  }
+  .my24service-container {
+    margin-right: 20px;
+  }
+}
+
+.login-container, .recovery-container {
+  margin-top: 30px;
+  width: 40%;
+}
+
+.form-actions {
+  @extend .pull-right;
+  margin-top: 20px;
+}
+
+/*
+  grid
+*/
+div.grid {
+  display: none;
+  table.grid-small tr {
+    font-size: 12px;
+  }
+}
+
+div.paginate {
+  display: none;
+}
+
+.page-subnav-2 {
+  margin-top: 8px;
+  .nav-pills {
+    li a {
+      padding: 5px 10px;
+    }
+  }
+}
+
+div.orders, div.past-orders {
+  td span.status-color {
+     margin-right: 4px;
+  }
+}
