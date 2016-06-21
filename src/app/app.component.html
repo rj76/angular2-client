@@ -4,7 +4,11 @@
       <a class="navbar-brand" [routerLink]="['/home']">My24service frontend</a>
       <a class="btn btn-primary btn-margin" [routerLink]="['/home']">Home</a>
       <a class="btn btn-primary btn-margin" [routerLink]="['/orders']">Orders</a>
-      <a class="btn btn-primary btn-margin" (click)="auth.login()" *ngIf="!auth.authenticated()">Log In</a>
+      <div class="well" *ngIf="!auth.authenticated()">
+        <p>Email: <input #email></p>
+        <p>Password: <input type="password" #password></p>
+        <a class="btn btn-primary btn-margin" (click)="auth.login(email.value, password.value)" >Log In</a>
+      </div>
       <a class="btn btn-primary btn-margin" (click)="auth.logout()" *ngIf="auth.authenticated()">Log Out</a>
     </div>
   </div>

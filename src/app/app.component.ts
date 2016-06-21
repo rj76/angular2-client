@@ -16,5 +16,4 @@ export class AppComponent {
 
 	constructor(private auth: Auth) {}
 
-	title = 'app works!';
 }
