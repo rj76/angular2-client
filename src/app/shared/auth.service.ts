@@ -1,19 +1,20 @@
 import {Injectable, NgZone} from '@angular/core';
-import {Http, Response} from '@angular/http';
+import {Http, Response, Headers, RequestOptions} from '@angular/http';
 import {Router} from '@angular/router';
 import {AuthHttp, tokenNotExpired} from 'angular2-jwt';
-import 'rxjs/add/operator/catch';
 import {Observable} from 'rxjs/Rx';
 
+// Add the RxJS Observable operators we need in this app.
+import '../rxjs-operators';
+
 import {environment} from '../environment';
-console.log('environment', environment);
 
 @Injectable()
 export class Auth {
   refreshSubscription: any;
   user: Object;
   zoneImpl: NgZone;
-  API_URL: string = 'http://localhost:3001';
+  errorMessage: any;
 
   constructor(private http: Http, private authHttp: AuthHttp, zone: NgZone, private router: Router) {
     this.zoneImpl = zone;
@@ -26,15 +27,9 @@ export class Auth {
   }
 
   private extractData(res: Response) {
-    // If authentication is successful, save the items
-    // in local storage
     let body = res.json();
-    let profile = {};
 
-    localStorage.setItem('profile', JSON.stringify(profile));
-    localStorage.setItem('id_token', body.token);
-
-    this.zoneImpl.run(() => this.user = profile);
+    return body || { };
   }
 
   private handleError (error: any) {
@@ -47,13 +42,30 @@ export class Auth {
   }
 
   public login(email: string, password: string) {
-    // try to login
+    // try to logi
+    let headers = new Headers(
+      {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    );
+    let options = new RequestOptions({ headers: headers });
     let body = { email: email, password: password };
 
-    this.http.post(`${environment.baseUrl}/core/api-token-auth/`, body)
+    let cold = this.http.post(`${environment.baseUrl}/core/api-token-auth/`, body, options)
       .map(this.extractData)
-      .catch(this.handleError);
-    
+      .catch(this.handleError)
+      .subscribe(
+        data => {
+              // If authentication is successful, save the items
+              // in local storage
+              localStorage.setItem('profile', JSON.stringify(data.profile));
+              localStorage.setItem('id_token', data.token);
+
+              this.zoneImpl.run(() => this.user = data.profile);
+        },
+        error =>  this.errorMessage = <any>error
+      )
   }
 
   public logout() {
