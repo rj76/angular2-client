@@ -7,17 +7,17 @@ import {Auth} from '../../shared';
 import {Order} from './order'
 
 // Add the RxJS Observable operators we need in this app.
-import '../rxjs-operators';
+import '../../rxjs-operators';
 
-import {environment} from '../environment';
+import {environment} from '../../environment';
 
 @Injectable()
-export class OrdersService {
+export class OrderService {
   user: Object;
   zoneImpl: NgZone;
   errorMessage: any;
 
-  constructor(private authHttp: AuthHttp, zone: NgZone, private router: Router) {
+  constructor(private authHttp: AuthHttp, zone: NgZone) {
   }
 
   getOrders (): Observable<Order[]> {

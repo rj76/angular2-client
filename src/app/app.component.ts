@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { HTTP_PROVIDERS } from '@angular/http';
 import { AUTH_PROVIDERS } from 'angular2-jwt';
 
-import {Auth} from './shared';
+import { Auth } from './shared';
 
 @Component({
   moduleId: module.id,
@@ -13,6 +13,7 @@ import {Auth} from './shared';
 })
 
 export class AppComponent {
+	title: 'Angular2 client'
 
 	constructor(private auth: Auth) {}
 

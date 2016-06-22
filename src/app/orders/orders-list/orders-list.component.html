@@ -1,3 +1,7 @@
-<p>
-  orders-list works!
-</p>
+<h1>Orders</h1>
+<ul>
+  <li *ngFor="let order of orders">
+    {{order.order_id}}
+  </li>
+</ul>
+<div class="error" *ngIf="errorMessage">{{errorMessage}}</div>

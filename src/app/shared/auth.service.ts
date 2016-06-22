@@ -17,8 +17,11 @@ export class Auth {
   errorMessage: any;
 
   constructor(private http: Http, private authHttp: AuthHttp, zone: NgZone, private router: Router) {
+    let profile = localStorage.getItem('profile');
+
     this.zoneImpl = zone;
-    this.user = JSON.parse(localStorage.getItem('profile'));
+    console.log(localStorage.getItem('id_token'), tokenNotExpired());
+    // this.user = profile ? JSON.parse(profile) : {};
   }
 
   public authenticated() {
@@ -42,7 +45,7 @@ export class Auth {
   }
 
   public login(email: string, password: string) {
-    // try to logi
+    // try to login
     let headers = new Headers(
       {
         'Content-Type': 'application/json',
@@ -59,7 +62,7 @@ export class Auth {
         data => {
               // If authentication is successful, save the items
               // in local storage
-              localStorage.setItem('profile', JSON.stringify(data.profile));
+              localStorage.setItem('profile', JSON.stringify(data.profile || {}));
               localStorage.setItem('id_token', data.token);
 
               this.zoneImpl.run(() => this.user = data.profile);
