@@ -4,7 +4,7 @@ import {Observable} from 'rxjs/Rx';
 import {AuthHttp, AuthConfig, AUTH_PROVIDERS} from 'angular2-jwt';
 
 import {Auth} from '../../shared';
-import {Order} from './order'
+import {OrderModel} from './order.model'
 
 // Add the RxJS Observable operators we need in this app.
 import '../../rxjs-operators';
@@ -20,7 +20,7 @@ export class OrderService {
   constructor(private authHttp: AuthHttp, zone: NgZone) {
   }
 
-  getOrders (): Observable<Order[]> {
+  getOrders (): Observable<OrderModel[]> {
     return this.authHttp.get(`${environment.baseUrl}/order/api/`)
                     .map(this.extractData)
                     .catch(this.handleError);
